@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<ASP_NET_HW_Module_02_part_03.Models.Contact>
 
-<h1>Задания 3, 4</h1>
+<h1>Задания 3 и 4</h1>
 <p>
     <h3>Задание 3</h3>
     Создайте класс Контакт. В нём нужно хранить такую информацию:<br />
@@ -70,9 +70,11 @@
 </table>
 
 <p>
-    <a asp-action="SaveToFile">Save to file</a>
+    <a asp-action="SaveAllToFile">Save to file</a>
 </p>
 
-<p>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadFile" />
+    <br />
     <a asp-action="LoadFromFile">Load from file</a>
-</p>
+</form>

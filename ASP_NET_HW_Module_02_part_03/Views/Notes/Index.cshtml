@@ -45,6 +45,7 @@
         </tr>
     </thead>
     <tbody>
+
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -76,8 +77,6 @@
 <p>
     <a asp-action="SaveAllToFile">Save an array of notes to a file</a>
 </p>
-<form method="post" enctype="multipart/form-data">
-    <input type="file" name="uploadFile" />
-    <br />
+<p>
     <a asp-action="LoadFromFile">Load an array of notes from a file</a>
-</form>
+</p>

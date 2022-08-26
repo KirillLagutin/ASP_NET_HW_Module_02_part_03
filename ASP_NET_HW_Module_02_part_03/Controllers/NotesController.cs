@@ -84,7 +84,7 @@ namespace ASP_NET_HW_Module_02_part_03.Controllers
 
             var note = notes.Single(n => n.Id == id);
 
-            var res = note.Id + ": " + note.Name + " - " + note.Text + " - "
+            var res = note.Id + " - " + note.Name + " - " + note.Text + " - "
                 + note.Date + " - " + note.Tags + Environment.NewLine;
 
             System.IO.File.AppendAllText(@path, res);
@@ -95,13 +95,13 @@ namespace ASP_NET_HW_Module_02_part_03.Controllers
         //POST: Notes/SaveAllToFile
         public IActionResult SaveAllToFile()
         {
-            var path = env.WebRootPath + "/App_Data/all_notes.txt";
+            var path = env.WebRootPath + "/App_Data/notes.txt";
 
             var text = "";
 
             foreach(var note in notes)
             {
-                text += note.Id + ": " + note.Name + " - " + note.Text + " - " 
+                text += note.Id + " - " + note.Name + " - " + note.Text + " - " 
                    + note.Date + " - " + note.Tags + Environment.NewLine;
             }
 
@@ -110,13 +110,14 @@ namespace ASP_NET_HW_Module_02_part_03.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult LoadFromFile(/*FormFile uploadFile*/)
+        //POST: Notes/LoadFromFile
+        public IActionResult LoadFromFile()
         {
-            string path = env.WebRootPath + "/App_Data/all_notes.txt"/* + uploadFile.FileName*/;
+            string path = env.WebRootPath + "/App_Data/load_notes.txt";
             int i = 0;
             foreach (var item in System.IO.File.ReadLines(path))
             {
-                string[] str = item.Split('-');
+                string[] str = item.Split(" - ");
 
                 notes[i].Id = int.Parse(str[0]);
                 notes[i].Name = str[1];
