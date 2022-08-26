@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ASP_NET_HW_Module_02_part_03.Models.Note>
+
+    <h1>Задания 1 и 2</h1>
+<p>
+    <h3>Задание 1</h3>
+        Создайте класс Заметка. В нём нужно хранить такую 
+    информацию:<br />
+    ■Название заметки;<br />
+    ■Текст заметки;<br />
+    ■Дата создания заметки;<br />
+    ■Теги.<br /> 
+    Реализуйте необходимые методы и поля.
+    Реализуйте вывод информации на экран и в файл. 
+    Используйте паттерн MVC в коде этой программы.
+</p>
+    <h4>Задание 2</h4>
+<p>
+        Добавьте к первому заданию возможность сохранения 
+    массива заметок в файл.<br /> 
+    Также добавьте возможность загрузки массива заметок из файла.<br /> 
+    Обязательно реализуйте возможность сохранения в разных форматах 
+    и загрузку из разных форматов файла.
+</p>
+
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+            <td>
+                <a asp-action="SaveToFile" asp-route-id="@item.Id">Save to file</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="SaveAllToFile">Save an array of notes to a file</a>
+</p>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadFile" />
+    <br />
+    <a asp-action="LoadFromFile">Load an array of notes from a file</a>
+</form>

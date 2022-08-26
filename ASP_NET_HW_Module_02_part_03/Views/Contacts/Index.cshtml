@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ASP_NET_HW_Module_02_part_03.Models.Contact>
+
+<h1>Задания 3, 4</h1>
+<p>
+    <h3>Задание 3</h3>
+    Создайте класс Контакт. В нём нужно хранить такую информацию:<br />
+ ■Имя контакта;<br />
+ ■Мобильный телефон;<br />
+ ■Альтернативный мобильный телефон;<br />
+ ■Email;<br />
+ ■Краткое описание.<br />
+ Реализуйте необходимые методы и поля.
+ Реализуйте вывод информации на экран и в файл. 
+ Используйте паттерн MVC в коде этой программы.
+</p>
+<p>
+    <h4>Задание 4</h4>
+    Добавьте к третьему заданию возможность сохранения 
+массива контактов в файл.<br />
+Также добавьте возможность загрузки массива контактов из файла.<br /> 
+Обязательно реализуйте возможность сохранения в разных форматах 
+и загрузку из разных форматов файла.
+</p>
+
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="SaveToFile">Save to file</a>
+</p>
+
+<p>
+    <a asp-action="LoadFromFile">Load from file</a>
+</p>
