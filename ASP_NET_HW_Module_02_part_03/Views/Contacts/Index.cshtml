@@ -73,8 +73,8 @@
     <a asp-action="SaveAllToFile">Save to file</a>
 </p>
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" asp-action="LoadFromFile">
     <input type="file" name="uploadFile" />
     <br />
-    <a asp-action="LoadFromFile">Load from file</a>
+    <input type="submit" value="Load from file" />
 </form>

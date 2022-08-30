@@ -73,7 +73,8 @@ namespace ASP_NET_HW_Module_02_part_03.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult LoadFromFile(FormFile uploadFile)
+
+        public IActionResult LoadFromFile(IFormFile uploadFile)
         {
             string path = env.WebRootPath + "/App_Data/" + uploadFile.FileName;
             int i = 0;

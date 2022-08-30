@@ -111,9 +111,9 @@ namespace ASP_NET_HW_Module_02_part_03.Controllers
         }
 
         //POST: Notes/LoadFromFile
-        public IActionResult LoadFromFile()
+        public IActionResult LoadFromFile(IFormFile uploadFile)
         {
-            string path = env.WebRootPath + "/App_Data/load_notes.txt";
+            string path = env.WebRootPath + "/App_Data/" + uploadFile.FileName;
             int i = 0;
             foreach (var item in System.IO.File.ReadLines(path))
             {
